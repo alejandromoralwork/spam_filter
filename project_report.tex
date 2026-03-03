@@ -164,6 +164,22 @@ Three risk levels are implemented:
 
 \section{Data Quality Assessment and Exploration}
 
+\subsection{Dataset Overview}
+
+The analysis dataset contains {total_messages:,} email messages with the following distribution:
+
+\begin{itemize}
+    \item \textbf{Total Messages}: {total_messages:,}
+    \item \textbf{Spam Messages}: {spam_count:,} ({spam_percentage:.1f}\%)
+    \item \textbf{Ham Messages}: {ham_count:,} ({ham_percentage:.1f}\%)
+    \item \textbf{Message Length - Spam}: {avg_spam_length:.0f} characters average
+    \item \textbf{Message Length - Ham}: {avg_ham_length:.0f} characters average
+    \item \textbf{Word Count - Spam}: {avg_spam_words:.1f} words average
+    \item \textbf{Word Count - Ham}: {avg_ham_words:.1f} words average
+\end{itemize}
+
+% TRAINING_ANALYSIS_PLACEHOLDER
+
 \section{Experimental Design}
 
 \subsection{Model Configuration}
@@ -181,7 +197,10 @@ The spam filter employs a Multinomial Naive Bayes classifier optimized for text 
 Data splitting follows best practices:
 \begin{itemize}
     \item 80\% training, 20\% testing split
+    \item Training set: {total_messages:,} messages (estimated)
+    \item Testing set: {total_messages:,} messages (estimated)
     \item Stratified sampling to maintain class distribution
+    \item Spam ratio maintained: {spam_percentage:.1f}\% across splits
     \item Random state fixed for reproducibility
 \end{itemize}
 
@@ -204,6 +223,22 @@ Comprehensive evaluation includes:
 The analysis utilized a comprehensive spam email dataset with balanced representation of spam and legitimate messages.
 
 \subsection{Performance Metrics Overview}
+
+\begin{table}[H]
+\centering
+\caption{Model Performance Summary}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Risk Level} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} \\\\
+\midrule
+Low & {low_accuracy:.0f}\% & {low_precision:.0f}\% & {low_recall:.0f}\% & {low_f1:.0f}\% \\\\
+Medium & {medium_accuracy:.0f}\% & {medium_precision:.0f}\% & {medium_recall:.0f}\% & {medium_f1:.0f}\% \\\\
+High & {high_accuracy:.0f}\% & {high_precision:.0f}\% & {high_recall:.0f}\% & {high_f1:.0f}\% \\\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% PREDICTION_ANALYSIS_PLACEHOLDER
 
 \subsection{Model Performance by Risk Level}
 
@@ -229,6 +264,8 @@ The system provides probability scores for each classification, enabling confide
 \subsection{Comparative Analysis}
 
 Performance comparison across risk levels reveals the trade-offs between false positive control and spam detection effectiveness. Users can select the appropriate configuration based on their specific requirements and tolerance for different types of errors.
+
+% COMPREHENSIVE_EVALUATION_PLACEHOLDER
 
 \section{Discussion}
 
@@ -299,6 +336,9 @@ This spam filter implementation demonstrates the effectiveness of machine learni
 Key achievements include:
 \begin{itemize}
     \item Successful implementation of multi-threshold classification system
+    \item Achieved {high_accuracy:.0f}\% accuracy with high-risk configuration
+    \item Maintained {low_fp_rate:.1f}\% false positive rate with low-risk setting
+    \item Processed {total_messages:,} messages with automated evaluation
     \item Comprehensive evaluation framework with automated reporting
     \item User-friendly interface supporting real-time classification
     \item Scalable architecture supporting large-scale deployment
