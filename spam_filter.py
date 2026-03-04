@@ -1035,21 +1035,35 @@ def update_latex_report_from_json(json_data=None, dataset_source="JSON"):
     prediction_analysis = create_prediction_analysis_latex_from_json(json_data)
     comprehensive_evaluation = create_comprehensive_evaluation_latex_from_json(json_data)
     
-    # Check if template has placeholders, if not, use it as-is
-    try:
-        # Try to format with all available stats
-        updated_content = template_content.format(**stats)
-    except KeyError as e:
-        print(f"Warning: Template placeholder '{e}' not found in stats. Attempting partial formatting...")
-        # Try partial formatting for known placeholders
-        import re
-        placeholders = re.findall(r'{(\w+)', template_content)
-        safe_stats = {k: v for k, v in stats.items() if k in placeholders}
-        try:
-            updated_content = template_content.format(**safe_stats)
-        except:
-            print("Partial formatting failed. Using template as-is.")
-            updated_content = template_content
+    # Use regex-based replacement for specific placeholders
+    updated_content = template_content
+    replacement_count = 0
+    
+    # Replace specific placeholders with actual values
+    import re
+    for key, value in stats.items():
+        # Create pattern that matches our placeholder format (with optional formatting)
+        pattern = r'{' + re.escape(key) + r'(?::[^}]*)?}'
+        matches = re.findall(pattern, updated_content)
+        
+        if matches:
+            # Format the value appropriately
+            if isinstance(value, float):
+                if 'percentage' in key:
+                    replacement = f"{value:.1f}"
+                elif 'fp_rate' in key:
+                    replacement = f"{value:.1f}"
+                else:
+                    replacement = f"{value:.0f}"
+            elif isinstance(value, int) and value > 1000:
+                replacement = f"{value:,}"  # Add comma separators for large numbers
+            else:
+                replacement = str(value)
+            
+            updated_content = re.sub(pattern, replacement, updated_content)
+            replacement_count += len(matches)
+    
+    print(f"Replaced {replacement_count} placeholders with actual data from JSON.")
     
     # Replace placeholder sections with actual content
     sections_to_replace = {
