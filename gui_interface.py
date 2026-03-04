@@ -77,6 +77,8 @@ class SpamFilterGUI:
         
         ttk.Button(train_frame, text="Train Model", 
                   command=self.train_model).pack(pady=2)
+        ttk.Button(train_frame, text="Load Trained Model", 
+                  command=self.load_trained_model).pack(pady=2)
         
         # Status section
         status_frame = ttk.LabelFrame(left_frame, text="Status", padding=10)
@@ -244,6 +246,48 @@ class SpamFilterGUI:
         except Exception as e:
             messagebox.showerror("Error", f"Training failed: {str(e)}")
             self.log_message(f"Training error: {str(e)}")
+    
+    def load_trained_model(self):
+        """Load an already trained model from file"""
+        try:
+            # Open file dialog to select model file
+            file_path = filedialog.askopenfilename(
+                title="Select Trained Model",
+                filetypes=[("Pickle files", "*.pkl"), ("All files", "*.*")],
+                initialdir="models"
+            )
+            
+            if not file_path:
+                return  # User cancelled
+            
+            self.log_message(f"Loading model from: {file_path}")
+            
+            # Load the model using SpamFilter's load_from_file method
+            loaded_model = SpamFilter.load_from_file(file_path)
+            
+            if loaded_model is None:
+                messagebox.showerror("Error", "Failed to load the selected model file!")
+                self.log_message("Failed to load model file.")
+                return
+            
+            # Set the loaded model
+            self.model = loaded_model
+            self.is_trained = True
+            
+            # Update risk level display to match loaded model
+            self.risk_level.set(self.model.risk_level)
+            
+            self.log_message(f"✓ Model loaded successfully!")
+            self.log_message(f"Risk Level: {self.model.risk_level}")
+            self.log_message(f"Threshold: {self.model.threshold}")
+            self.log_message(f"Model Type: {self.model.model_type}")
+            self.log_message("Model is ready for testing!")
+            
+            messagebox.showinfo("Success", f"Model loaded successfully!\nRisk Level: {self.model.risk_level}")
+            
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to load model: {str(e)}")
+            self.log_message(f"Error loading model: {str(e)}")
     
     def classify_message(self):
         """Classify a single message"""
