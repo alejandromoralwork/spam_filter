@@ -475,11 +475,58 @@ Email spam continues to be a significant problem in digital communications, with
 
 % COMPREHENSIVE_EVALUATION_PLACEHOLDER
 
-\\section{{Conclusion}}
+\\section{Repository and Source Code}
+
+\\subsection{Code Availability}
+The complete source code for this spam filter implementation is available on GitHub for educational and research purposes. The repository includes all necessary files to reproduce the results presented in this report.
+
+\\subsubsection{Repository Information}
+\\begin{description}
+    \\item[Repository URL] \\url{https://github.com/alejandromoralwork/spam_filter/tree/main}
+    \\item[License] Open source - available for academic and educational use
+    \\item[Documentation] Comprehensive README with setup and usage instructions
+    \\item[Requirements] Python 3.12+, scikit-learn, pandas, matplotlib, seaborn
+\\end{description}
+
+\\subsubsection{Repository Contents}
+The repository contains the following key components:
+\\begin{itemize}
+    \\item \\texttt{spam\\_filter.py} - Core spam filter implementation with multi-risk level support
+    \\item \\texttt{report\\_generator.py} - Automated LaTeX report generation module
+    \\item \\texttt{gui\\_interface.py} - Graphical user interface for interactive testing
+    \\item \\texttt{requirements.txt} - Python dependencies specification
+    \\item \\texttt{models/} - Directory containing pre-trained model files
+    \\item \\texttt{data/} - Training data and results in JSON format
+    \\item \\texttt{README.md} - Comprehensive documentation and usage guide
+\\end{itemize}
+
+\\subsubsection{Getting Started}
+To replicate this work:
+\\begin{enumerate}
+    \\item Clone the repository: \\texttt{git clone https://github.com/alejandromoralwork/spam\\_filter.git}
+    \\item Install dependencies: \\texttt{pip install -r requirements.txt}
+    \\item Run training: \\texttt{python spam\\_filter.py}
+    \\item Launch GUI: \\texttt{python gui\\_interface.py}
+    \\item Generate reports: \\texttt{python spam\\_filter.py --report-only}
+\\end{enumerate}
+
+\\subsubsection{Citation}
+If you use this implementation in your research or educational work, please cite this repository:
+\\begin{verbatim}
+@misc{spam_filter_2026,
+  title={Multi-Risk Level Spam Filter Implementation},
+  author={Alejandro Moral},
+  year={2026},
+  url={https://github.com/alejandromoralwork/spam_filter},
+  note={Machine Learning Spam Classification with Risk-Based Thresholds}
+}
+\\end{verbatim}
+
+\\section{Conclusion}
 
 This spam filter implementation demonstrates the effectiveness of machine learning approaches for email classification with risk-level adjustment capabilities.
 
-\\end{{document}}
+\\end{document}
 """
 
 
