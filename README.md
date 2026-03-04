@@ -219,10 +219,6 @@ This project is provided for educational and research purposes. Please ensure pr
 - **Libraries**: scikit-learn, pandas, matplotlib, tkinter, kagglehub
 - **Methodology**: CRISP-DM framework for data mining projects
 
-## Contact
-
-For questions, issues, or suggestions, please create an issue in the project repository or contact the development team.
-
 ---
 
 **Version**: 2.0  
