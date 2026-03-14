@@ -1,160 +1,35 @@
-# Spam Filter Project - Task Description
-
-## Project Overview
-Implement a comprehensive machine learning-based spam email filter using Python and scikit-learn. The system should demonstrate the complete CRISP-DM methodology with automated reporting capabilities.
-
-## Core Requirements
-
-### 1. Data Management
-- [x] Automated dataset acquisition from Kaggle using kagglehub API
-- [x] Support for custom CSV dataset imports
-- [x] Data quality assessment and preprocessing pipeline
-- [x] Fallback sample data generation for demonstration
-
-### 2. Machine Learning Implementation
-- [x] Text preprocessing (cleaning, normalization, vectorization)
-- [x] TF-IDF feature extraction with optimized parameters
-- [x] Naive Bayes classification with hyperparameter tuning
-- [x] Risk-level adjustment system (low/medium/high sensitivity)
-- [x] Comprehensive model evaluation framework
-
-### 3. User Interface
-- [x] Command-line interface for automated analysis
-- [x] Interactive GUI using tkinter for real-time testing
-- [x] Data visualization and exploration tools
-- [x] Results export and saving capabilities
-
-### 4. Automated Reporting
-- [x] Dynamic LaTeX report generation with real performance data
-- [x] Automated statistics calculation and insertion
-- [x] Performance comparison across risk levels
-- [x] PDF compilation with proper formatting
-
-### 5. Evaluation and Analysis
-- [x] Multiple performance metrics (accuracy, precision, recall, F1-score)
-- [x] Confusion matrix visualization for each risk level
-- [x] ROC curve analysis and comparison
-- [x] False positive rate monitoring
-
-## Advanced Features
-
-### Risk Management System
-- [x] Three configurable risk levels with different thresholds
-- [x] Use case recommendations for each risk level
-- [x] Trade-off analysis between false positives and detection rate
-- [x] Probability-based confidence scoring
-
-### Visualization Suite
-- [x] Dataset distribution analysis plots
-- [x] Message length and word count comparisons
-- [x] Confusion matrices with proper labeling
-- [x] ROC curves for performance comparison
-- [x] Interactive GUI-based plotting
-
-### Documentation and Usability
-- [x] Comprehensive README with installation instructions
-- [x] Code documentation with docstrings
-- [x] Error handling and user feedback
-- [x] Progress logging and status updates
-
-## Technical Specifications
-
-### Performance Requirements
-- [x] Handle datasets with 10,000+ messages efficiently
-- [x] Real-time classification response < 1 second
-- [x] Memory usage optimization for large vocabularies
-- [x] Scalable architecture for production deployment
-
-### Code Quality Standards
-- [x] Modular design with clear separation of concerns
-- [x] Exception handling for robust operation
-- [x] Configurable parameters for flexibility
-- [x] Reproducible results with fixed random seeds
-
-### Output Requirements
-- [x] Multiple visualization formats (PNG, PDF)
-- [x] Structured performance metrics export
-- [x] LaTeX report with publication quality
-- [x] CSV data export capabilities
-
-## Deliverables
-
-### Core Files
-1. **spam_filter.py** - Main classification engine with automated reporting
-2. **gui_interface.py** - Interactive user interface
-3. **project_report.tex** - LaTeX template with dynamic data integration
-4. **requirements.txt** - Python dependencies specification
-5. **README.md** - Comprehensive project documentation
-
-### Generated Outputs
-1. **Automated Reports** - LaTeX/PDF reports with real performance data
-2. **Visualizations** - Charts, plots, and analysis graphics
-3. **Performance Metrics** - Detailed evaluation summaries
-4. **Dataset Exports** - Processed data for further analysis
-
-## Success Criteria
-
-### Functional Requirements
-- [x] Successfully classify spam/ham messages with >85% accuracy
-- [x] Provide three distinct risk levels with measurable differences
-- [x] Generate automated reports with current performance data
-- [x] Support both GUI and command-line operation modes
-
-### Quality Requirements
-- [x] Code passes all error handling tests
-- [x] Documentation enables easy setup and usage
-- [x] Visualizations are clear and informative
-- [x] Reports are professional and publication-ready
-
-### Performance Requirements
-- [x] Training completes within reasonable time (< 5 minutes)
-- [x] Classification provides real-time response
-- [x] Memory usage remains manageable for typical datasets
-- [x] System handles edge cases gracefully
-
-## Implementation Status
-
-### ✅ Completed Tasks
-- Data acquisition and preprocessing pipeline
-- Machine learning model implementation with risk levels
-- Comprehensive evaluation framework
-- Interactive GUI with real-time testing
-- Automated LaTeX report generation system
-- Visualization suite with multiple plot types
-- Error handling and user feedback systems
-- Documentation and setup instructions
-
-### 🎯 Project Goals Achieved
-- **CRISP-DM Implementation**: Complete methodology demonstration
-- **Automated Reporting**: Real-time LaTeX integration with performance data
-- **Risk Management**: Three-level threshold system with use case alignment
-- **User Experience**: Both technical and non-technical user support
-- **Production Ready**: Scalable architecture with proper error handling
-
-## Future Enhancement Opportunities
-
-### Advanced ML Features
-- [ ] Deep learning models (LSTM, BERT) for improved accuracy
-- [ ] Ensemble methods combining multiple algorithms
-- [ ] Online learning for continuous model updates
-- [ ] Multi-language spam detection support
-
-### System Integration
-- [ ] Email client plugin development
-- [ ] Cloud-based API service deployment
-- [ ] Enterprise security platform integration
-- [ ] Mobile application interface
-
-### Analytics Enhancement
-- [ ] Real-time performance monitoring dashboard
-- [ ] A/B testing framework for threshold optimization
-- [ ] Adversarial attack detection and mitigation
-- [ ] Explainable AI features for decision transparency
-
----
-
-**Project Status**: ✅ COMPLETE  
-**Quality Level**: Production Ready  
-**Documentation**: Comprehensive  
-**Testing**: Thorough  
-**Deployment**: Ready
+1.3 Task 3: Development of a Spam Filter
+Background: In recent years the short messages communication has become ubiquitous for social interactions
+around the globe. This applies both to private as well as professional sectors. The amount of spam messages has
+increased as well, particularly on publicly available channels. Your company would like to install an open channel
+for some of their products to enable fast and interactive feedback for their customers or possible future
+customers. You are the data scientist in the company asked to support the service team with building a spam filter
+for this channel.
+Therefore, you are provided with a dataset compiled from different open-source datasets for short messages.
+One request from the service team is that the model should allow for adjustments with respect to the risk of
+allowing spam to pass, due to the huge variety of message quality that the (possible) customers provide.
+Therefore, the spam filter should be adjustable via different spam-risk levels, e.g., “low-risk“ (very restrictive) and
+„high-risk“ (not restrictive). The messages passing the “low-risk“-level are immediately displayed. The other ones
+are moved to a folder for further analysis. You should also provide a strategy for further analysis, so as not to lose
+customers.
+Task: Support the service team via a classification model that can identify spam from short messages and that
+allows for an adjustable risk level and a plausible strategy to deal with erroneous spam classification.
+Dataset: The dataset and additional information are provided in the file:
+“Additional_Information_Case_Study_DLBDSME01”
+Detailed description of the task: The task consists of both a programming part and conceptual subtasks. Here
+follows a detailed description of open questions to be answered in the final document:
+— Organize the project using the CRISP-DM or the MS Team Data Science method. Make a proposal on how
+to build the folder structure of a Git repository for the project.
+— Assess the quality of the data set provided. Prepare and visualize your findings in such a way that
+business partners can understand the important relationships in a clear and simple way.
+— Create, train, test a binary classification model with the provided dataset.
+(Tip: due to the short length of the messages, word counts, and simple models might already perform
+reasonable)
+— To help business partners develop confidence in your new model, a detailed error analysis is very
+important so that the business partners also understand the weaknesses of your approach.
+In the last step of the project, you should propose how your model can be integrated into the daily work of the
+service team, for example how a graphical user interface (GUI) could look like.
+Note: There is not one perfect solution. It is important to keep the concepts and techniques you have learned
+during the course in mind and to carefully prepare and process the data accordingly. At the end of each step of
+this use case, you should critically assess whether all necessary operations have been conducted and argue for
+the decisions you have made during this process.
